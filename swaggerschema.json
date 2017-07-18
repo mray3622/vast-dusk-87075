@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Evening dusk in Swagger",
+    "version": "1.0.0",
+    "title": "Evening Dusk Swagger",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "shielded-bayou-24333.herokuapp.com",
+  "paths": {
+    "/account/lastCreditRating": {
+      "get": {
+        "summary": "Evaluates credit rating and decides what payment terms to offer.",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Specifies input parameters to calculate payment term",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/creditRating"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "accountId": {
+      "type": "object",
+      "properties": {
+        "accountIdString": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "accountId"
+        }
+    },
+    "creditRating": {
+      "type": "object",
+      "properties": {
+        "creditRatingString": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "creditRating"
+      }
+    }
+  }
+}
