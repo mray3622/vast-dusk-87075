@@ -16,6 +16,15 @@ server.route({
   }
 });
 
+// establish route for serving up swagger schema.json
+server.route({
+  method: 'GET',
+  path: '/swaggerschema',
+  handler: function(request, reply) {
+    reply(require('./swaggerschema'));
+  }
+});
+
 // establish route for the creditrating of the  /order resource
 server.route({
   method: 'GET',
